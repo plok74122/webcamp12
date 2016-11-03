@@ -3,7 +3,10 @@ namespace :dev do
   task :rebuild => ["db:reset", :fake]
   task :fake do
     500.times do
-      Event.create(:name => Faker::Name.name, :description => Faker::Lorem.paragraph, :capacity => (1..50).to_a.sample)
+      Event.create(:name => Faker::Name.name,
+                   :description => Faker::Lorem.paragraph,
+                   :capacity => (1..50).to_a.sample,
+                   :is_public => [true, false].sample)
     end
     puts "finish"
   end
