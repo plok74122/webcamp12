@@ -1,14 +1,20 @@
 <h1>Event List</h1>
 
-<ul>
+<table class="table table-hover">
+  <tr>
+    <td>Event Name</td>
+    <td>show</td>
+    <td>edit</td>
+    <td>destroy</td>
+  </tr>
   <% @events.each do |event| %>
-      <li>
-        <%= event.name %>
-        <%= link_to "show", :controller => :events, :action => :show, :id => event %>
-        <%= link_to "edit", :controller => :events, :action => :edit, :id => event %>
-        <%= link_to "destroy", :controller => :events, :action => :destroy, :id => event %>
-      </li>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= link_to "show", :controller => :events, :action => :show, :id => event %></td>
+        <td><%= link_to "edit", :controller => :events, :action => :edit, :id => event %></td>
+        <td><%= link_to "destroy", :controller => :events, :action => :destroy, :id => event %></td>
+      </tr>
   <% end %>
-</ul>
+</table>
 <%= paginate @events %>
-<%= link_to "new event", :controller => :events, :action => :new %>
+<%= link_to "new event", { :controller => :events, :action => :new }, :class => "btn btn-success" %>
