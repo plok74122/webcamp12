@@ -1,0 +1,14 @@
+<% if event.errors.any? %>
+    <ul>
+      <% event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :description %>
+<%= f.text_area :description %>
+<%= f.label :capacity %>
+<%= f.text_field :capacity %>
+<%= f.submit %>
