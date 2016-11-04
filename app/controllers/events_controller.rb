@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       flash[:notice] = "新增成功"
-      redirect_to :action => :index
+      redirect_to events_path
     else
       render "new"
     end
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def update
     if @event.update(event_params)
       flash[:notice] = "更新成功"
-      redirect_to :action => :show, :id => @event
+      redirect_to event_path(@event)
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     flash[:notice] = "刪除成功"
-    redirect_to :action => :index
+    redirect_to events_path
   end
 
   private

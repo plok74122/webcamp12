@@ -12,11 +12,11 @@
       <tr>
         <td><%= event.name %></td>
         <td><%= show_public(event.is_public) %></td>
-        <td><%= link_to "show", :controller => :events, :action => :show, :id => event %></td>
-        <td><%= link_to "edit", :controller => :events, :action => :edit, :id => event %></td>
-        <td><%= link_to "destroy", :controller => :events, :action => :destroy, :id => event %></td>
+        <td><%= link_to "show", event_path(event) %></td>
+        <td><%= link_to "edit", edit_event_path(event) %></td>
+        <td><%= link_to "destroy", event_path(event) ,:method => :delete %></td>
       </tr>
   <% end %>
 </table>
 <%= paginate @events %>
-<%= link_to "new event", { :controller => :events, :action => :new }, :class => "btn btn-success" %>
+<%= link_to "new event", new_event_path, :class => "btn btn-success" %>
