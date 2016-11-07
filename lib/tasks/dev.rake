@@ -2,6 +2,10 @@ namespace :dev do
   desc "重建一些假資料"
   task :rebuild => ["db:reset", :fake]
   task :fake => :environment do
+    Group.create(:name => "Ruby")
+    Group.create(:name => "Javascript")
+    Group.create(:name => "PHP")
+    Group.create(:name => ".Net")
     15.times do
       @event = Event.create(:name => Faker::Name.name,
                             :description => Faker::Lorem.paragraph,
