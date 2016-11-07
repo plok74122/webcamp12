@@ -15,6 +15,7 @@ namespace :dev do
         @event.attendees.create(:username => Faker::Name.name)
       end
       @event.create_location(:name => Faker::Address.city)
+      @event.group_ids = Group.all.map { |g| g.id if [true, false].sample }.compact
     end
     puts "finish"
   end
