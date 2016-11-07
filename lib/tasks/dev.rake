@@ -10,6 +10,7 @@ namespace :dev do
       (0..20).to_a.sample.times do
         @event.attendees.create(:username => Faker::Name.name)
       end
+      @event.create_location(:name => Faker::Address.city)
     end
     puts "finish"
   end
