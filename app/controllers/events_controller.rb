@@ -3,6 +3,10 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.page(params[:page]).per(20)
+    respond_to do |format|
+      format.html { render "index" }
+      format.json { render :json => @events }
+    end
   end
 
   def new
