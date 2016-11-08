@@ -3,6 +3,7 @@
   <tr>
     <td>Event Name</td>
     <td>Category</td>
+    <td>set_location</td>
     <td>is_public</td>
     <td>Attendees</td>
     <td>show</td>
@@ -13,6 +14,7 @@
       <tr>
         <td><%= event.name %></td>
         <td><%= event.category_name %></td>
+        <td><%= link_to "set_location", new_event_locations_path(event) %></td>
         <td><%= show_public(event.is_public) %></td>
         <td><%= link_to "Ateendees", event_attendees_path(event) %></td>
         <td><%= link_to "show", event_path(event) %></td>
