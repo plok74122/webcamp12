@@ -7,7 +7,7 @@ namespace :dev do
     Group.create(:name => "PHP")
     Group.create(:name => ".Net")
     50.times do
-      @event = Event.create(:name => Faker::Name.name,
+      @event = Event.create(:name => Faker::Pokemon.name,
                             :description => Faker::Lorem.paragraph,
                             :capacity => (1..50).to_a.sample,
                             :is_public => [true, false].sample)

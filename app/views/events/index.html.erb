@@ -3,6 +3,7 @@
   <tr>
     <td>Event Name</td>
     <td>is_public</td>
+    <td>Attendees</td>
     <td>show</td>
     <td>edit</td>
     <td>destroy</td>
@@ -11,6 +12,7 @@
       <tr>
         <td><%= event.name %></td>
         <td><%= show_public(event.is_public) %></td>
+        <td><%= link_to "Ateendees" , event_attendees_path(event) %></td>
         <td><%= link_to "show", event_path(event) %></td>
         <td><%= link_to "edit", edit_event_path(event) %></td>
         <td><%= link_to "destroy", event_path(event, :page => params[:page]), :method => :delete %></td>
