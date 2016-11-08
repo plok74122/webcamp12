@@ -2,4 +2,9 @@
 
 <h3><%= @event.description %></h3>
 
+<ul>
+  <% @event.groups.each do |g| %>
+      <li><%= g.name %></li>
+  <% end %>
+</ul>
 <%= link_to "index", events_path %>

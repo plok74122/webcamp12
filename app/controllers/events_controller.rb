@@ -14,6 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    byebug
     @event = Event.new(event_params)
     if @event.save
       flash[:notice] = "新增成功"
@@ -51,6 +52,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description ,:category_id ,:capacity)
+    params.require(:event).permit(:name, :description, :category_id, :capacity, :group_ids => [])
   end
 end
