@@ -11,4 +11,5 @@
 <%= f.text_area :description %>
 <%= f.label :capacity %>
 <%= f.text_field :capacity %>
+<%= f.select :category_id , Category.all.collect { |c| [ c.name, c.id ] } %>
 <%= f.submit %>

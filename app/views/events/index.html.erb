@@ -2,6 +2,7 @@
 <table class="table table-hover">
   <tr>
     <td>Event Name</td>
+    <td>Category</td>
     <td>is_public</td>
     <td>Attendees</td>
     <td>show</td>
@@ -11,8 +12,9 @@
   <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
+        <td><%= event.category_name %></td>
         <td><%= show_public(event.is_public) %></td>
-        <td><%= link_to "Ateendees" , event_attendees_path(event) %></td>
+        <td><%= link_to "Ateendees", event_attendees_path(event) %></td>
         <td><%= link_to "show", event_path(event) %></td>
         <td><%= link_to "edit", edit_event_path(event) %></td>
         <td><%= link_to "destroy", event_path(event, :page => params[:page]), :method => :delete %></td>

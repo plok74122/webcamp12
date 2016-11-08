@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.page(params[:page]).per(20)
+    @events = Event.includes(:category).page(params[:page]).per(20)
     respond_to do |format|
       format.html { render "index" }
       format.json { render :json => @events }
@@ -51,6 +51,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description)
+    params.require(:event).permit(:name, :description ,:category_id ,:capacity)
   end
 end
