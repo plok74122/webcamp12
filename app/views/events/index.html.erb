@@ -1,5 +1,4 @@
 <h1>Event List</h1>
-
 <table class="table table-hover">
   <tr>
     <td>Event Name</td>
@@ -14,7 +13,7 @@
         <td><%= show_public(event.is_public) %></td>
         <td><%= link_to "show", event_path(event) %></td>
         <td><%= link_to "edit", edit_event_path(event) %></td>
-        <td><%= link_to "destroy", event_path(event) ,:method => :delete %></td>
+        <td><%= link_to "destroy", event_path(event, :page => params[:page]), :method => :delete %></td>
       </tr>
   <% end %>
 </table>

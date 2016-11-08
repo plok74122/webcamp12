@@ -6,7 +6,7 @@ namespace :dev do
     Group.create(:name => "Javascript")
     Group.create(:name => "PHP")
     Group.create(:name => ".Net")
-    15.times do
+    50.times do
       @event = Event.create(:name => Faker::Name.name,
                             :description => Faker::Lorem.paragraph,
                             :capacity => (1..50).to_a.sample,
