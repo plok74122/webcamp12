@@ -1,4 +1,8 @@
 <h1>Event List</h1>
+<div class="btn-group">
+  <%= link_to "ID", events_path(:order => "id"), :class => "btn btn-success" %>
+  <%= link_to "Name", events_path(:order => "name"), :class => "btn btn-danger" %>
+</div>
 <%= form_tag events_path, :method => :get do %>
     <%= text_field_tag "keyword" %>
     <%= submit_tag "搜尋" %>

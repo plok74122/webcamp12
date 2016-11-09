@@ -7,6 +7,13 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
+
+    if params[:order] == "id"
+      @events = @events.order("id")
+    elsif params[:order] == "name"
+      @events = @events.order("name")
+    end
+    
     @events = @events.includes(:category).page(params[:page]).per(20)
     respond_to do |format|
       format.html { render "index" }
