@@ -1,4 +1,8 @@
 <h1>Event List</h1>
+<%= form_tag events_path, :method => :get do %>
+    <%= text_field_tag "keyword" %>
+    <%= submit_tag "搜尋" %>
+<% end %>
 <%= form_tag bulk_update_events_path, :method => :post do %>
     <table class="table table-hover">
       <tr>

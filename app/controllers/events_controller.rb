@@ -2,7 +2,12 @@ class EventsController < ApplicationController
   before_action :set_event, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.includes(:category).page(params[:page]).per(20)
+    if params[:keyword]
+      @events = Event.where('name like ?', "%#{params[:keyword]}%")
+    else
+      @events = Event.all
+    end
+    @events = @events.includes(:category).page(params[:page]).per(20)
     respond_to do |format|
       format.html { render "index" }
       format.json { render :json => @events }
