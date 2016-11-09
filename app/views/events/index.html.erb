@@ -1,27 +1,31 @@
 <h1>Event List</h1>
-<table class="table table-hover">
-  <tr>
-    <td>Event Name</td>
-    <td>Category</td>
-    <td>set_location</td>
-    <td>is_public</td>
-    <td>Attendees</td>
-    <td>show</td>
-    <td>edit</td>
-    <td>destroy</td>
-  </tr>
-  <% @events.each do |event| %>
+<%= form_tag bulk_update_events_path, :method => :post do %>
+    <table class="table table-hover">
       <tr>
-        <td><%= event.name %></td>
-        <td><%= event.category_name %></td>
-        <td><%= link_to "set_location", new_event_locations_path(event) %></td>
-        <td><%= show_public(event.is_public) %></td>
-        <td><%= link_to "Ateendees", event_attendees_path(event) %></td>
-        <td><%= link_to "show", event_path(event) %></td>
-        <td><%= link_to "edit", edit_event_path(event) %></td>
-        <td><%= link_to "destroy", event_path(event, :page => params[:page]), :method => :delete %></td>
+        <td>Event Name</td>
+        <td>Category</td>
+        <td>set_location</td>
+        <td>is_public</td>
+        <td>Attendees</td>
+        <td>show</td>
+        <td>edit</td>
+        <td>destroy</td>
       </tr>
-  <% end %>
-</table>
+      <% @events.each do |event| %>
+          <tr>
+            <td><%= check_box_tag "ids[]", event.id %><%= event.name %><%= event.name %></td>
+            <td><%= event.category_name %></td>
+            <td><%= link_to "set_location", new_event_locations_path(event) %></td>
+            <td><%= show_public(event.is_public) %></td>
+            <td><%= link_to "Ateendees", event_attendees_path(event) %></td>
+            <td><%= link_to "show", event_path(event) %></td>
+            <td><%= link_to "edit", edit_event_path(event) %></td>
+            <td><%= link_to "destroy", event_path(event, :page => params[:page]), :method => :delete %></td>
+          </tr>
+      <% end %>
+    </table>
+    <%= submit_tag "update" %>
+    <%= submit_tag "delete" %>
+<% end %>
 <%= paginate @events %>
 <%= link_to "new event", new_event_path, :class => "btn btn-success" %>

@@ -14,7 +14,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    byebug
     @event = Event.new(event_params)
     if @event.save
       flash[:notice] = "新增成功"
@@ -43,6 +42,16 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     flash[:notice] = "刪除成功"
+    redirect_to events_path
+  end
+
+  def bulk_update
+    ids = Array(params[:ids])
+    if params[:commit] == "update"
+      Event.where(:id => ids).update_all(:is_public => true)
+    elsif params[:commit] == "delete"
+      Event.where(:id => ids).destroy_all
+    end
     redirect_to events_path
   end
 
