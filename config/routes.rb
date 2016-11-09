@@ -7,4 +7,8 @@ Rails.application.routes.draw do
       post 'bulk_update'
     end
   end
+
+  namespace :admin do
+    resources :events
+  end
 end
